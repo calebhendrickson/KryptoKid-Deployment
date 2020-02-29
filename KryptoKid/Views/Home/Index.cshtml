@@ -1,0 +1,344 @@
+﻿
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Exchange</h2>
+
+@if (ViewBag.Email == "null")
+{
+    <div>**please login/register to buy/sell**</div>
+}
+    @if (ViewBag.Email != "null")
+    {
+    <div>
+        @Html.ActionLink("Your Account", "Index", "Dashboard")
+    </div>
+
+
+    <div> Welcome @ViewBag.Email </div>
+    }
+
+    <table class="table table-hover">
+        <tr>
+            <td width="14%">
+                Code
+            </td>
+            <td width="14%">
+                Name
+            </td>
+            <td width="14%">
+                Price
+            </td>
+            <td width="14%">
+                Unit
+            </td>
+            <td width="14%">
+                Last Refreshed
+            </td>
+            @if (ViewBag.Email != "null")
+            {
+                <td width="16%">
+                    Action
+                </td>
+                <td width="14%">
+                    Quantity
+                </td>
+            }
+            </tr>
+        <tr>
+            <td width="14%" id="code1">
+                @ViewBag.CodeCollection[0]
+            </td>
+            <td width="14%" id="name1">
+                @ViewBag.NameCollection[0]
+            </td>
+            <td width="14%" id="rate1">
+                @ViewBag.RateCollection[0]
+            </td>
+            <td width="14%" id="currency1">
+                @ViewBag.CurrencyCollection[0]
+            </td>
+            <td width="14%" id="time1">
+                @ViewBag.TimeCollection[0]
+            </td>
+            @if (ViewBag.Email != "null")
+            {
+                <td width="16%">
+                    <button id="1" class="btn btn-primary">Buy Now</button>
+                </td>
+                <td width="14%">
+                    <input id="quantity1" />
+                </td>
+            }
+            </tr>
+        <tr>
+            <td width="14%" id="code2">
+                @ViewBag.CodeCollection[1]
+            </td>
+            <td width="14%" id="name2">
+                @ViewBag.NameCollection[1]
+            </td>
+            <td width="14%" id="rate2">
+                @ViewBag.RateCollection[1]
+            </td>
+            <td width="14%" id="currency2">
+                @ViewBag.CurrencyCollection[1]
+            </td>
+            <td width="14%" id="time2">
+                @ViewBag.TimeCollection[1]
+            </td>
+            @if (ViewBag.Email != "null")
+            {
+                <td width="16%">
+                    <button id="2" class="btn btn-primary">Buy Now</button>
+                </td>
+                <td width="14%">
+                    <input id="quantity2" />
+                </td>
+            }
+            </tr>
+        <tr>
+            <td width="14%" id="code3">
+                @ViewBag.CodeCollection[2]
+            </td>
+            <td width="14%" id="name3">
+                @ViewBag.NameCollection[2]
+            </td>
+            <td width="14%" id="rate3">
+                @ViewBag.RateCollection[2]
+            </td>
+            <td width="14%" id="currency3">
+                @ViewBag.CurrencyCollection[2]
+            </td>
+            <td width="14%" id="time3">
+                @ViewBag.TimeCollection[2]
+            </td>
+            @if (ViewBag.Email != "null")
+            {
+                <td width="16%">
+                    <button id="3" class="btn btn-primary">Buy Now</button>
+                </td>
+                <td width="14%">
+                    <input id="quantity3" />
+                </td>
+            }
+            </tr>
+        <tr>
+            <td width="14%" id="code4">
+                @ViewBag.CodeCollection[3]
+            </td>
+            <td width="14%" id="name4">
+                @ViewBag.NameCollection[3]
+            </td>
+            <td width="14%" id="rate4">
+                @ViewBag.RateCollection[3]
+            </td>
+            <td width="14%" id="currency4">
+                @ViewBag.CurrencyCollection[3]
+            </td>
+            <td width="14%" id="time4">
+                @ViewBag.TimeCollection[3]
+            </td>
+            @if (ViewBag.Email != "null")
+            {
+                <td width="16%">
+                    <button id="4" class="btn btn-primary">Buy Now</button>
+                </td>
+                <td width="14%">
+                    <input id="quantity4" />
+                </td>
+            }
+            </tr>
+        <tr>
+            <td width="14%" id="code5">
+                @ViewBag.CodeCollection[4]
+            </td>
+            <td width="14%" id="name5">
+                @ViewBag.NameCollection[4]
+            </td>
+            <td width="14%" id="rate5">
+                @ViewBag.RateCollection[4]
+            </td>
+            <td width="14%" id="currency5">
+                @ViewBag.CurrencyCollection[4]
+            </td>
+            <td width="14%" id="time5">
+                @ViewBag.TimeCollection[4]
+            </td>
+            @if (ViewBag.Email != "null")
+            {
+                <td width="16%">
+                    <button id="5" class="btn btn-primary">Buy Now</button>
+                </td>
+                <td width="14%">
+                    <input id="quantity5" />
+                </td>
+            }
+            </tr>
+
+    </table>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    <script>
+
+    $('#1').click(function () {
+        purchaseItem(1);
+    });
+     $('#2').click(function () {
+        purchaseItem(2);
+     });
+     $('#3').click(function () {
+        purchaseItem(3);
+     });
+     $('#4').click(function () {
+        purchaseItem(4);
+     });
+     $('#5').click(function () {
+        purchaseItem(5);
+    });
+
+    function purchaseItem(id) {
+
+
+        if (id == 1) {
+            var quantity = document.getElementById("quantity1").value;
+
+            var rate = @ViewBag.RateCollection[0];
+
+            let dataObject = new FormData();
+            dataObject.append("stock_name", `@ViewBag.NameCollection[0]`);
+            dataObject.append("price", rate);
+            dataObject.append("quantity", quantity);
+            dataObject.append("email", `@ViewBag.Email`);
+            dataObject.append("userid", 0);
+
+            console.log(dataObject);
+
+            ajaxCall(dataObject);
+        }
+        else if (id == 2) {
+            var quantity = document.getElementById("quantity2").value;
+
+            var rate = @ViewBag.RateCollection[1];
+
+            let dataObject = new FormData();
+            dataObject.append("stock_name", `@ViewBag.NameCollection[1]`);
+            dataObject.append("price", rate);
+            dataObject.append("quantity", quantity);
+            dataObject.append("email", `@ViewBag.Email`);
+            dataObject.append("userid", 0);
+
+            console.log(dataObject);
+
+            ajaxCall(dataObject);
+        }
+        else if (id == 3) {
+
+            var quantity = document.getElementById("quantity3").value;
+
+            var rate = @ViewBag.RateCollection[2];
+
+            let dataObject = new FormData();
+            dataObject.append("stock_name", `@ViewBag.NameCollection[2]`);
+            dataObject.append("price", rate);
+            dataObject.append("quantity", quantity);
+            dataObject.append("email", `@ViewBag.Email`);
+            dataObject.append("userid", 0);
+
+            console.log(dataObject);
+
+            ajaxCall(dataObject);
+        }
+        else if (id == 4) {
+            var quantity = document.getElementById("quantity4").value;
+
+            var rate = @ViewBag.RateCollection[3];
+
+            let dataObject = new FormData();
+            dataObject.append("stock_name", `@ViewBag.NameCollection[3]`);
+            dataObject.append("price", rate);
+            dataObject.append("quantity", quantity);
+            dataObject.append("email", `@ViewBag.Email`);
+            dataObject.append("userid", 0);
+
+            console.log(dataObject);
+
+            ajaxCall(dataObject);
+        }
+        else if (id == 5) {
+            var quantity = document.getElementById("quantity5").value;
+
+            var rate = @ViewBag.RateCollection[4];
+
+            let dataObject = new FormData();
+            dataObject.append("stock_name", `@ViewBag.NameCollection[4]`);
+            dataObject.append("price", rate);
+            dataObject.append("quantity", quantity);
+            dataObject.append("email", `@ViewBag.Email`);
+            dataObject.append("userid", 0);
+
+            console.log(dataObject);
+
+            ajaxCall(dataObject);
+        }
+        else {
+
+        }
+    }
+
+    function ajaxCall(dataObject) {
+
+        //$.ajaxSetup({
+        //    beforeSend: function (xhr,settings) {
+        //        alert(settings.data);
+        //        alert(settings.url);
+        //    }
+        //});
+        $.ajax({
+            method: "POST",
+            url: "/Home/Purchase",
+            data: dataObject,
+            dataType: "html",
+            processData: false,
+            contentType: false,
+            error: function(xhr, textStatus, error){
+                console.log(xhr.statusText);
+                console.log(textStatus);
+                console.log(error);
+            },
+            success: function () {
+                alert("Purchase Successful");
+                refreshPage();
+            }
+        });
+
+        function refreshPage(){
+            window.location.reload();
+        }
+
+        //$.ajax({
+        //    method: "POST",
+        //    //type: "POST",
+        //    url: "/Home/Purchase",
+        //    data: JSON.stringify(dataObject),
+        //    //data: { name: dataObject[0], price: dataObject[1], quantity: dataObject[2], email: dataObject[3], userid: dataObject[4]  },
+        //    dataType: "html",
+        //    contentType: "application/json",
+        //    error: function(xhr, textStatus, error){
+        //        console.log(xhr.statusText);
+        //        console.log(textStatus);
+        //        console.log(error);
+        //    },
+        //    success: function () {
+        //        alert("Purchase Successful");
+        //    },
+        //    //traditional: true
+        //});
+
+
+    }
+
+    </script>

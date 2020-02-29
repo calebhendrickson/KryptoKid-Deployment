@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KryptoKid", "KryptoKid\KryptoKid.csproj", "{2169CE0C-3F17-430C-947E-E0C1F7398222}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2169CE0C-3F17-430C-947E-E0C1F7398222}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2169CE0C-3F17-430C-947E-E0C1F7398222}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2169CE0C-3F17-430C-947E-E0C1F7398222}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2169CE0C-3F17-430C-947E-E0C1F7398222}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6034182B-A3F0-4C72-B70C-82B9A94C899B}
+	EndGlobalSection
+EndGlobal

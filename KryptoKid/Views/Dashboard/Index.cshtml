@@ -1,0 +1,229 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Account Dashboard</h2>
+
+<div>
+    @Html.ActionLink("Home", "Index", "Home")
+</div>
+
+<div>Account Balance = @ViewBag.Balance </div>
+ 
+<table class="table table-hover">
+    <tr>
+        <td width="20%">
+            Name
+        </td>
+        <td width="20%">
+            Value
+        </td>
+        <td width="20%">
+            Owned
+        </td>
+        <td width="20%">
+            Action
+        </td>
+        <td width="20%">
+            Quantity
+        </td>
+    </tr>
+
+    @if (ViewBag.Length >= 1  && @ViewBag.Shares[0] != 0)
+    {
+    <tr>
+        <td width="20%">
+            @ViewBag.Name[0]
+        </td>
+        <td width="20%">
+            @ViewBag.Value[0]
+        </td>
+        <td width="20%">
+            @ViewBag.Shares[0]
+        </td>
+        <td width="20%">
+            <button id="1" class="btn btn-primary">Sell</button>
+        </td>
+        <td width="20%">
+            <input id="quantity1" />
+        </td>
+    </tr>
+
+    }
+    @if (ViewBag.Length >= 2  && @ViewBag.Shares[1] != 0)
+    {
+    <tr>
+        <td width="20%">
+            @ViewBag.Name[1]
+        </td>
+        <td width="20%">
+            @ViewBag.Value[1]
+        </td>
+        <td width="20%">
+            @ViewBag.Shares[1]
+        </td>
+        <td width="20%">
+            <button id="2" class="btn btn-primary">Sell</button>
+        </td>
+        <td width="20%">
+            <input id="quantity2" />
+        </td>
+    </tr>
+    }
+    @if (@ViewBag.Length >= 3  && @ViewBag.Shares[2] != 0)
+    {
+    <tr>
+        <td width="20%">
+            @ViewBag.Name[2]
+        </td>
+        <td width="20%">
+            @ViewBag.Value[2]
+        </td>
+        <td width="20%">
+            @ViewBag.Shares[2]
+        </td>
+        <td width="20%">
+            <button id="3" class="btn btn-primary">Sell</button>
+        </td>
+        <td width="20%">
+            <input id="quantity3" />
+        </td>
+    </tr>
+    }
+    @if (@ViewBag.Length >= 4  && @ViewBag.Shares[3] != 0)
+    {
+    <tr>
+        <td width="20%">
+            @ViewBag.Name[3]
+        </td>
+        <td width="20%">
+            @ViewBag.Value[3]
+        </td>
+        <td width="20%">
+            @ViewBag.Shares[3]
+        </td>
+        <td width="20%">
+            <button id="4" class="btn btn-primary">Sell</button>
+        </td>
+        <td width="20%">
+            <input id="quantity4" />
+        </td>
+    </tr>
+    }
+    @if (@ViewBag.Length >= 5 && @ViewBag.Shares[4] != 0)
+    {
+    <tr>
+        <td width="20%">
+            @ViewBag.Name[4]
+        </td>
+        <td width="20%">
+            @ViewBag.Value[4]
+        </td>
+        <td width="20%">
+            @ViewBag.Shares[4]
+        </td>
+        <td width="20%">
+            <button id="5" class="btn btn-primary">Sell</button>
+        </td>
+        <td width="20%">
+            <input id="quantity5" />
+        </td>
+    </tr>
+    }
+
+</table>
+
+<div>Total Asset Value = @ViewBag.Assets </div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+<script>
+
+    $('#1').click(function () {
+        sellItem(0);
+    });
+     $('#2').click(function () {
+        sellItem(1);
+     });
+     $('#3').click(function () {
+        sellItem(2);
+     });
+     $('#4').click(function () {
+        sellItem(3);
+     });
+     $('#5').click(function () {
+        sellItem(4);
+    });
+
+    function sellItem(id) {
+
+        
+        var nameData = @Html.Raw(Json.Serialize(ViewBag.Name));
+        var priceData = @Html.Raw(Json.Serialize(ViewBag.Value));
+
+        var emailData = `@ViewBag.Email`;
+
+        if (id == 0) {
+            quantity = document.getElementById("quantity1").value;
+        }
+        else if (id == 1) {
+            quantity = document.getElementById("quantity2").value;
+        }
+        else if (id == 2) {
+            quantity = document.getElementById("quantity3").value;
+        }
+        else if (id == 3) {
+            quantity = document.getElementById("quantity4").value;
+        }
+        else if (id == 4) {
+            quantity = document.getElementById("quantity5").value;
+        }
+        else {
+            quantity = 0
+        }
+
+        var rate = priceData[id];
+
+        let dataObject = new FormData();
+        dataObject.append("stock_name", nameData[id]);
+        dataObject.append("price", rate);
+        dataObject.append("quantity", quantity);
+        dataObject.append("email", emailData);
+        dataObject.append("userid", 0);
+
+        ajaxCall(dataObject);
+    }
+
+    function ajaxCall(dataObject) {
+
+        //$.ajaxSetup({
+        //    beforeSend: function (xhr,settings) {
+        //        alert(settings.data);
+        //        alert(settings.url);
+        //    }
+        //});
+         $.ajax({
+                method: "POST",
+                url: "/Dashboard/Sell",
+                data: dataObject,
+                dataType: "html",
+                processData: false,
+                contentType: false,
+                error: function(xhr, textStatus, error){
+                   console.log(xhr.statusText);
+                   console.log(textStatus);
+                   console.log(error);
+                },
+              success: function () {
+                  alert("Purchase Successful");
+                  refreshPage();
+               }
+        });
+    }
+
+    function refreshPage(){
+        window.location.reload();
+    }
+
+
+</script>
