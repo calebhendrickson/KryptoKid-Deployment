@@ -9925,11 +9925,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\chendric\\source\\repos\\KryptoKid\\KryptoKid\\KryptoKid.csproj",
+      "projectUniqueName": "C:\\Users\\chendric\\Desktop\\docker-working\\KryptoKid\\KryptoKid.csproj",
       "projectName": "KryptoKid",
-      "projectPath": "C:\\Users\\chendric\\source\\repos\\KryptoKid\\KryptoKid\\KryptoKid.csproj",
+      "projectPath": "C:\\Users\\chendric\\Desktop\\docker-working\\KryptoKid\\KryptoKid.csproj",
       "packagesPath": "C:\\Users\\chendric\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\chendric\\source\\repos\\KryptoKid\\KryptoKid\\obj\\",
+      "outputPath": "C:\\Users\\chendric\\Desktop\\docker-working\\KryptoKid\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
