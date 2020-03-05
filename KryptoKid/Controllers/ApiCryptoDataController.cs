@@ -32,9 +32,6 @@ namespace KryptoKid.Controllers
 
             //Debug.WriteLine(jsonData);
 
-            //var monthlyPrices = $"https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol={symbol}&apikey={apiKey}&datatype=csv"
-            //                .GetStringFromUrl().FromCsv<List<AlphaVantageData>>();
-
             StreamWriter writer = new StreamWriter("C:/cryptodata/data.json");
             writer.Write(jsonData);
             writer.Close();

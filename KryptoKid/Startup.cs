@@ -15,6 +15,8 @@ using Microsoft.AspNetCore.Mvc.Authorization;
 using KryptoKid.Models;
 using KryptoKid.Services;
 using Microsoft.AspNetCore.Http;
+using Hangfire;
+using KryptoKid.Controllers;
 
 namespace KryptoKid
 {
@@ -30,6 +32,12 @@ namespace KryptoKid
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //services.AddHttpClient();
+
+            services.AddHangfire(configuration =>
+            {
+                configuration.UseSqlServerStorage("Server=.;Database=DayTraderDb;Trusted_Connection=True;");
+            });
 
             services.AddDbContext<AppDbContext>(options =>
             {
@@ -63,6 +71,9 @@ namespace KryptoKid
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseHangfireServer();
+            app.UseHangfireDashboard();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -74,6 +85,7 @@ namespace KryptoKid
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
+
             app.UseStaticFiles();
 
             app.UseRouting();
@@ -89,6 +101,15 @@ namespace KryptoKid
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+            
+
+            // Background job
+            RecurringJob.AddOrUpdate<IUserService>("Update-Db", x => x.DbUpdate(),
+                "0 */15 * ? * *"); 
         }
+
+
+
+
     }
 }

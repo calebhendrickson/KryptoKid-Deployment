@@ -44,8 +44,21 @@ namespace KryptoKid.Services
         // RETRIEVE DUMMY DATA
         List<Coins> RetrieveDummyData();
 
+
         // GET COINS IN PORTFOLIO
         List<string[]> CoinsInPortfolio(string email);
+
+
+        // RETRIEVE COIN DATA FROM ALPHAVANTAGE API
+        Coins GetCryptoData(string from_currency);
+
+
+        // UPDATE INDIVDUAL COIN DATA
+        void updateCoinData(Coins coin);
+
+
+        // UPDATE COIN DATA IN DATABASE
+        void DbUpdate();
 
     }
 }

@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using KryptoKid.Models;
 using Microsoft.AspNetCore.Identity;
+using Newtonsoft.Json.Linq;
+using ServiceStack;
 
 namespace KryptoKid.Services
 {
@@ -161,6 +164,104 @@ namespace KryptoKid.Services
             };
 
             return rows;
+        }
+
+        public Coins GetCryptoData(string from_currency)
+        {
+            // store in an production environment variable later on
+            var apiKey = "XHBPMR58X933ZMKL";
+            var to_currency = "USD";
+
+            var jsonData = $"https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency={from_currency}&to_currency={to_currency}&apikey={apiKey}".GetStringFromUrl();
+
+            //Debug.WriteLine(jsonData);
+
+            // TODO change file location
+            // Relative path to file within the project, probably same directory
+            StreamWriter writer = new StreamWriter("./data.json");
+            writer.Write(jsonData);
+            writer.Close();
+
+            // TODO change file location
+            // Relative path to file within the project, probably same directory
+            TextReader reader = new StreamReader("./data.json");
+            string json = reader.ReadToEnd();
+            //Debug.WriteLine(json);
+            var jsonObject = JObject.Parse(json);
+
+            Coins ourResult = new Coins
+            {
+                From_Currency_Code = jsonObject["Realtime Currency Exchange Rate"]["1. From_Currency Code"].ToString(),
+                From_Currency_Name = jsonObject["Realtime Currency Exchange Rate"]["2. From_Currency Name"].ToString(),
+                To_Currency_Code = jsonObject["Realtime Currency Exchange Rate"]["3. To_Currency Code"].ToString(),
+                To_Currency_Name = jsonObject["Realtime Currency Exchange Rate"]["4. To_Currency Name"].ToString(),
+                Exchange_Rate = Convert.ToDouble(jsonObject["Realtime Currency Exchange Rate"]["5. Exchange Rate"].ToString()),
+
+                // check on this
+                Last_Refreshed = Convert.ToDateTime(jsonObject["Realtime Currency Exchange Rate"]["6. Last Refreshed"].ToString()),
+                Time_Zone = jsonObject["Realtime Currency Exchange Rate"]["7. Time Zone"].ToString(),
+                Bid_price = Convert.ToDouble(jsonObject["Realtime Currency Exchange Rate"]["8. Bid Price"].ToString()),
+                Ask_price = Convert.ToDouble(jsonObject["Realtime Currency Exchange Rate"]["9. Ask Price"].ToString()),
+            };
+
+            reader.Close();
+
+            return ourResult;
+
+        }
+
+        public void updateCoinData(Coins coin)
+        {
+            Coins findEntry = _db.Coins.AsEnumerable().Where(x => x.From_Currency_Code == coin.From_Currency_Code).FirstOrDefault();
+            Coins cryptoData = _db.Coins.Find(findEntry.id);
+            _db.Coins.Remove(cryptoData);
+            _db.Coins.Add(coin);
+            _db.SaveChanges();
+        }   
+
+        public void DbUpdate()
+        {
+           
+            // INIT ARRAY OF COIN CODES THAT CAN BE SENT TO API METHOD
+            Coins cryptoData = new Coins
+            {
+            };
+            List<Coins> cryptoList = new List<Coins>();
+            string[] cryptoArray = new string[5];
+            cryptoArray[0] = "BTC";
+            cryptoArray[1] = "ETH";
+            cryptoArray[2] = "XRP";
+            cryptoArray[3] = "BCH";
+            cryptoArray[4] = "LTC";
+
+
+            // NEED A WAY OF INCREMENTING OUR INDEX EACH TIME WITHOUT INTIALIZING VARIABLE EACH TIME
+            // WILL DO LATER, FOR NOW SINCE WE ONLY HAVE %, IT IS HARDCODED
+
+
+            // USE CODE AT THAT INDEX AND CALL THE API METHOD AND RECEIVE UP TO DATE COIN VALUES
+            cryptoList.Add(GetCryptoData(cryptoArray[0]));
+
+            cryptoList.Add(GetCryptoData(cryptoArray[1]));
+
+            cryptoList.Add(GetCryptoData(cryptoArray[2]));
+
+            cryptoList.Add(GetCryptoData(cryptoArray[3]));
+
+            cryptoList.Add(GetCryptoData(cryptoArray[4]));
+
+
+            // UPDATE DATABASE ENTRY FOR THAT COIN
+            updateCoinData(cryptoList[0]);
+
+            updateCoinData(cryptoList[1]);
+
+            updateCoinData(cryptoList[2]);
+
+            updateCoinData(cryptoList[3]);
+
+            updateCoinData(cryptoList[4]);
+
         }
     }
 }

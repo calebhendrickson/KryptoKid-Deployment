@@ -1,0 +1,13 @@
+{
+    "Realtime Currency Exchange Rate": {
+        "1. From_Currency Code": "LTC",
+        "2. From_Currency Name": "Litecoin",
+        "3. To_Currency Code": "USD",
+        "4. To_Currency Name": "United States Dollar",
+        "5. Exchange Rate": "60.81000000",
+        "6. Last Refreshed": "2020-03-05 04:44:01",
+        "7. Time Zone": "UTC",
+        "8. Bid Price": "60.82000000",
+        "9. Ask Price": "60.83000000"
+    }
+}

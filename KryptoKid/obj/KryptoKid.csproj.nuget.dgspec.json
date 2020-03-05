@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\chendric\\Desktop\\docker-working\\KryptoKid\\KryptoKid.csproj": {}
+    "C:\\Users\\chendric\\source\\repos\\KryptoKid\\KryptoKid\\KryptoKid.csproj": {}
   },
   "projects": {
-    "C:\\Users\\chendric\\Desktop\\docker-working\\KryptoKid\\KryptoKid.csproj": {
+    "C:\\Users\\chendric\\source\\repos\\KryptoKid\\KryptoKid\\KryptoKid.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\chendric\\Desktop\\docker-working\\KryptoKid\\KryptoKid.csproj",
+        "projectUniqueName": "C:\\Users\\chendric\\source\\repos\\KryptoKid\\KryptoKid\\KryptoKid.csproj",
         "projectName": "KryptoKid",
-        "projectPath": "C:\\Users\\chendric\\Desktop\\docker-working\\KryptoKid\\KryptoKid.csproj",
+        "projectPath": "C:\\Users\\chendric\\source\\repos\\KryptoKid\\KryptoKid\\KryptoKid.csproj",
         "packagesPath": "C:\\Users\\chendric\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\chendric\\Desktop\\docker-working\\KryptoKid\\obj\\",
+        "outputPath": "C:\\Users\\chendric\\source\\repos\\KryptoKid\\KryptoKid\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -41,6 +41,14 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "Hangfire.AspNetCore": {
+              "target": "Package",
+              "version": "[1.7.9, )"
+            },
+            "Hangfire.SqlServer": {
+              "target": "Package",
+              "version": "[1.7.9, )"
+            },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
               "version": "[3.1.2, )"

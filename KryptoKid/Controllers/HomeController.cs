@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Identity;
 using KryptoKid.Services;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
+//using System.Net.Http;
 
 namespace KryptoKid.Controllers
 {
@@ -36,46 +37,6 @@ namespace KryptoKid.Controllers
         //[Authorize]
         public async Task<ActionResult> Index()
         {
-            // WEB API CODE --------------------------
-            // PUT THIS IN ITS OWN CONTROLLER... IF WE EVEN KEEP IT
-
-            //CryptoModel cryptoData = new CryptoModel
-            //{
-            //};
-            //List<CryptoModel> cryptoList = new List<CryptoModel>();
-            //string[] cryptoArray = new string[4];
-            //cryptoArray[0] = "BTC";
-            //cryptoArray[1] = "ETH";
-            //cryptoArray[2] = "XRP";
-            //cryptoArray[3] = "BCH";
-            ////cryptoArray[4] = "LTC";
-
-
-            //using (var client = new HttpClient())
-            //{
-            //    client.BaseAddress = new Uri("http://localhost:59761/api/");
-
-            //    for(int i = 0; i < cryptoArray.Length; i++)
-            //    {
-            //        // HTTP GET 
-            //        var responseTask = client.GetAsync("apicryptodata/" + cryptoArray[i]);
-            //        responseTask.Wait();
-
-            //        var result = responseTask.Result;
-            //        if (result.IsSuccessStatusCode)
-            //        {
-            //            var readTask = result.Content.ReadAsAsync<CryptoModel>();
-            //            readTask.Wait();
-
-            //            cryptoData = readTask.Result;
-
-            //        }
-            //        cryptoList.Add(cryptoData);
-            //    }
-
-            //}
-
-
             
             // GETTING USERNAME/EMAIL FROM THE REQUEST COOKIE
             string cookieValueFromContext = _httpContextAccessor.HttpContext.User.Identity.Name;
@@ -216,7 +177,8 @@ namespace KryptoKid.Controllers
             //return View("../Account/Index");
             //return View("Index");
         }
-    
+
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
