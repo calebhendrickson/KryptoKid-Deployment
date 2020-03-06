@@ -65,12 +65,12 @@ register actions.
 
 
 # Future Plans
-    I would like to secure the application with https along with other security features to be determined.
-    Email Verification
-    Better Styling
-    Search bar to search for and view the portfolios of users on the application
-    Sitewide leaderboard to display the top earners on the application on the home page
-    Shows your account's earning rank compared to all the other users on the application
-    More currencies. I would like to someday have to top 50 currencies on the application
-    Can click on a coin to see its price history and yearly, monthly, daily price charts
+*I would like to secure the application with https along with other security features to be determined.
+*Email Verification
+*Better Styling
+*Search bar to search for and view the portfolios of users on the application
+*Sitewide leaderboard to display the top earners on the application on the home page
+*Shows your account's earning rank compared to all the other users on the application
+*More currencies. I would like to someday have to top 50 currencies on the application
+*Can click on a coin to see its price history and yearly, monthly, daily price charts
 
