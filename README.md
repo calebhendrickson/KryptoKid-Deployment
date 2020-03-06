@@ -3,7 +3,7 @@
 This is the deployment repository for the KryptoKid Web Application. This repository contains the aspnet.core 3.1 sdk and a docker file.
 
 
-#Features of the application
+# Features of the application
 
 This application is designed to allow users to sign up and create an account/log in to an existing account. Once an account has been created,
 users can buy/sell crypto-currencies based on real-time prices with the virtual balance they have been alotted on sign up. There is no real 
@@ -24,7 +24,7 @@ Kubernetes' node port to the internet.
 You can visit this application at http://107.178.212.130:31077.
 
 
-#Construction/Technologies of this application
+# Construction/Technologies of this application
 
 
 This appliation was created using the ASP.NET Core Framework version 3.1. I designed this application with a client-server based 
@@ -35,7 +35,7 @@ Presentation Layer:
 This layer consists of javascript, html, and C# taghelpers within MVC View pages. This layer comminucates with the corresponding 
 controllers inside the business layer.
 
-(C#, MVC View Pages, Html, JavaScript)
+(C#, MVC View Pages, Html, JavaScript, Twitter Bootstrap)
 
 
 Business Layer:
@@ -64,13 +64,13 @@ register actions.
 (Google Cloud SQL Server)
 
 
-#Future Plans
-I would like to secure the application with https along with other security features to be determined.
-Email Verification
-Better Styling
-Search bar to search for and view the portfolios of users on the application
-Sitewide leaderboard to display the top earners on the application on the home page
-Shows your account's earning rank compared to all the other users on the application
-More currencies. I would like to someday have to top 50 currencies on the application
-Can click on a coin to see its price history and yearly, monthly, daily price charts
+# Future Plans
+    I would like to secure the application with https along with other security features to be determined.
+    Email Verification
+    Better Styling
+    Search bar to search for and view the portfolios of users on the application
+    Sitewide leaderboard to display the top earners on the application on the home page
+    Shows your account's earning rank compared to all the other users on the application
+    More currencies. I would like to someday have to top 50 currencies on the application
+    Can click on a coin to see its price history and yearly, monthly, daily price charts
 
