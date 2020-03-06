@@ -31,21 +31,21 @@ This appliation was created using the ASP.NET Core Framework version 3.1. I desi
 layered architecture. 
 
 
-Presentation Layer:
+**Presentation Layer:**
 This layer consists of javascript, html, and C# taghelpers within MVC View pages. This layer comminucates with the corresponding 
 controllers inside the business layer.
 
 (C#, MVC View Pages, Html, JavaScript, Twitter Bootstrap)
 
 
-Business Layer:
+**Business Layer:**
 This layer consists of the ASP.NET Core controllers that process the http get and post requests for the presentation layer. A service 
 class from the Persistence layer was injected into this layer to allow for calls to the service class.
 
 (C#, MVC Controllers, Hangfire Framework)
 
 
-Persistence Layer:
+**Persistence Layer:**
 To create this layer I abstracted all of the entity framework data access out of the controller and put it into a "services" class.
 This was huge because it keeps the code with the controller very clean and readable. Service method names are very descriptive and 
 commented for easy readability. Lastly, and most importantly it keeps the code MUCH more modular and decreases oupling and increases 
@@ -54,7 +54,7 @@ cohesion.
 (C#, MVC Models, Identity Services, Entity Framework)
 
 
-Database Layer
+**Database Layer:**
 This database exists on Google Cloud's Cloud SQL service. It consists of many tables. There are many tables created by the ASP.NET Core Identity
 Membership Service. I also created a custom model to add extra properties to the Users table.There are also many tables created by the Hangfire 
 framework. I created tables & models for the sales and purchases performed by users within the application. There are also tables and models
