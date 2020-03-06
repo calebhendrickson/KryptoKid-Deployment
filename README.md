@@ -1,6 +1,6 @@
 # KryptoKid Crypto Currency Portfolio Simulator Web Application
 
-This is the deployment repository for the KryptoKid Web Application. This repository contains the aspnet.core 3.1 sdk and a docker file.
+This is the deployment repository for the KryptoKid Web Application. This repository contains the aspnet.core 3.1 sdk and a docker file along with the project code.
 
 
 # Features of the application
