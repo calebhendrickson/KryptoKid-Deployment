@@ -5,12 +5,15 @@ This is the deployment repository for the KryptoKid Web Application. This reposi
 
 # Features of the application
 
-This application is designed to allow users to sign up and create an account/log in to an existing account. Once an account has been created,
-users can buy/sell crypto-currencies based on real-time prices with the virtual balance they have been alotted on sign up. There is no real 
-money exhanging hands in this application. This is just a simulation of buying/selling crypto currency to get people exposed to the crypto market 
-for free. The user's balance and total value of assets is displayed on the user's account page. The hangfire framework server runs in the background 
-and requests the data on cryptocurrencies every 15 minutes. This would be updated up to the minute if there was not a limit on the amount of API calls 
-that you can make to the Alpha Vantage API to get crypto-currency data for free. I wanted to keep development cost of this application absolutely free.
+This application is designed to allow users to sign up and create an account/log in to an existing account. 
+
+Once an account has been created, users can buy/sell crypto-currencies based on real-time prices with the virtual balance they have been alotted on sign up. 
+
+There is no real money exhanging hands in this application. This is just a simulation of buying/selling crypto currency to get people exposed to the crypto market for free. 
+
+The user's balance and total value of assets is displayed on the user's account page. 
+
+The hangfire framework server runs in the background and requests the data on cryptocurrencies every 15 minutes. This would be updated up to the minute if there was not a limit on the amount of API calls that you can make to the Alpha Vantage API to get crypto-currency data for free. I wanted to keep development cost of this application absolutely free.
 
 
 # Deployment of this application
@@ -31,11 +34,14 @@ This appliation was created using the ASP.NET Core Framework version 3.1. I desi
 layered architecture. 
 
 
+
+
 **Presentation Layer:**
 This layer consists of javascript, html, and C# taghelpers within MVC View pages. This layer comminucates with the corresponding 
 controllers inside the business layer.
 
 (C#, MVC View Pages, Html, JavaScript, Twitter Bootstrap)
+
 
 
 **Business Layer:**
@@ -45,6 +51,7 @@ class from the Persistence layer was injected into this layer to allow for calls
 (C#, MVC Controllers, Hangfire Framework)
 
 
+
 **Persistence Layer:**
 To create this layer I abstracted all of the entity framework data access out of the controller and put it into a "services" class.
 This was huge because it keeps the code with the controller very clean and readable. Service method names are very descriptive and 
@@ -52,6 +59,7 @@ commented for easy readability. Lastly, and most importantly it keeps the code M
 cohesion.
 
 (C#, MVC Models, Identity Services, Entity Framework)
+
 
 
 **Database Layer:**
