@@ -36,7 +36,7 @@ namespace KryptoKid
 
             services.AddHangfire(configuration =>
             {
-                configuration.UseSqlServerStorage("Server=34.69.181.67;Database=day-trader-cloud-db;Uid=sqlserver;Password=sqlpassword;");
+                configuration.UseSqlServerStorage("Server=35.188.34.56;Database=krypto-kid-cloud-db;Uid=sqlserver;Password=sqlpassword;");
             });
 
             services.AddDbContext<AppDbContext>(options =>
