@@ -17,7 +17,7 @@ namespace KryptoKid.Models
         [Required, MaxLength(255)]
         //[Required(AllowEmptyStrings = false, ErrorMessage = "Email Required fool")]
         [DataType(DataType.EmailAddress)]
-        [Remote(action: "isEmailInUse", controller: "User")]
+        [Remote(action: "isEmailInUse", controller: "Account")]
         public string email { get; set; }
 
         [Required, DataType(DataType.Password)]
